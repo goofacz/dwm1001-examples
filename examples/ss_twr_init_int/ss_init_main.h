@@ -12,10 +12,7 @@
  * @author Decawave
  */
 
-/* Declaration of static functions. */
-static void resp_msg_get_ts(uint8 *ts_field, uint32 *ts);
-
-int ss_init_run(void);
+void ss_init_run(void);
 
 void rx_ok_cb(const dwt_cb_data_t *cb_data);
 
@@ -24,7 +21,5 @@ void rx_to_cb(const dwt_cb_data_t *cb_data);
 void rx_err_cb(const dwt_cb_data_t *cb_data);
 
 void tx_conf_cb(const dwt_cb_data_t *cb_data);
-
-static void resp_msg_get_ts(uint8 *ts_field, uint32 *ts);
 
 void ss_initiator_task_function (void * pvParameter);

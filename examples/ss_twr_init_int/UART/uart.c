@@ -16,7 +16,7 @@
 #include "nrf_delay.h"
 #include "nrf.h"
 #include "nrf_uart.h"
-#include "UART.h"
+#include "uart.h"
 #include "bsp.h"
 #include "boards.h"
 

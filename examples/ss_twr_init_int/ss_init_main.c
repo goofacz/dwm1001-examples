@@ -21,8 +21,6 @@
 */
 #include <stdio.h>
 #include <string.h>
-#include "FreeRTOS.h"
-#include "task.h"
 #include "deca_device_api.h"
 #include "deca_regs.h"
 #include "port_platform.h"
@@ -52,10 +50,10 @@ static uint8 frame_seq_nb = 0;
 static uint8 rx_buffer[RX_BUF_LEN];
 
 /* Hold copy of status register state here for reference so that it can be examined at a debug breakpoint. */
-static uint32 status_reg = 0;
+//static uint32 status_reg = 0;
 
 /* UWB microsecond (uus) to device time unit (dtu, around 15.65 ps) conversion factor.
-* 1 uus = 512 / 499.2 µs and 1 µs = 499.2 * 128 dtu. */
+* 1 uus = 512 / 499.2 \B5s and 1 \B5s = 499.2 * 128 dtu. */
 #define UUS_TO_DWT_TIME 65536
 
 /* Speed of light in air, in metres per second. */
@@ -88,7 +86,7 @@ static volatile int rx_count = 0 ; // Successful receive counter
 *
 * @return none
 */
-int ss_init_run(void)
+void ss_init_run(void)
 {
 
   /* Loop forever initiating ranging exchanges. */
@@ -281,20 +279,20 @@ static void resp_msg_get_ts(uint8 *ts_field, uint32 *ts)
 *
 * @param[in] pvParameter   Pointer that will be used as the parameter for the task.
 */
-void ss_initiator_task_function (void * pvParameter)
-{
-  UNUSED_PARAMETER(pvParameter);
-
-  dwt_setleds(DWT_LEDS_ENABLE);
-
-  while (true)
-  {
-    ss_init_run();
-    /* Delay a task for a given number of ticks */
-    vTaskDelay(RNG_DELAY_MS);
-    /* Tasks must be implemented to never return... */
-  }
-}
+//void ss_initiator_task_function (void * pvParameter)
+//{
+//  UNUSED_PARAMETER(pvParameter);
+//
+//  dwt_setleds(DWT_LEDS_ENABLE);
+//
+//  while (true)
+//  {
+//    ss_init_run();
+//    /* Delay a task for a given number of ticks */
+//    vTaskDelay(RNG_DELAY_MS);
+//    /* Tasks must be implemented to never return... */
+//  }
+//}
 /*****************************************************************************************************************************************************
 * NOTES:
 *

@@ -11,9 +11,6 @@
  */
 
 #include "sdk_config.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "timers.h"
 #include "bsp.h"
 #include "boards.h"
 #include "nordic_common.h"
@@ -61,7 +58,7 @@ static dwt_config_t config = {
 #define POLL_TX_TO_RESP_RX_DLY_UUS 100 
 
 /*Should be accurately calculated during calibration*/
-#define TX_ANT_DLY 16300
+//#define TX_ANT_DLY 16300
 #define RX_ANT_DLY 16456	
 
 //--------------dw1000---end---------------
@@ -107,12 +104,12 @@ static void led_toggle_timer_callback (void * pvParameter)
 }
 #else
 
-  extern int ss_init_run(void);
+  extern void ss_init_run(void);
 
 #endif   // #ifdef USE_FREERTOS
 
 
-
+void vInterruptInit(void);
 
 int main(void)
 {
